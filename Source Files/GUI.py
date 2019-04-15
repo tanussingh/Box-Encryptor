@@ -1,5 +1,4 @@
-#   By: Tanushri Singh
-#   Teammates:- Jack Chen, Lauren Murphy
+#   By: Tanushri Singh, Jack Chen, Lauren Murphy
 #   CS 6348 - Data and Application Security
 #   Instructor: Murat Kantarcioglu
 
