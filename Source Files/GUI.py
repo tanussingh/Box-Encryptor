@@ -70,6 +70,32 @@ class GUI:
 
         rootWindow.mainloop()
 
+    def uploadFiles():
+        # Set up Options Frame
+        rootWindow = Tk()                   #Constructor rootWindow - main window
+        rootWindow.title('Upload')
+        rootWindow.geometry("600x320")
+        rootWindow.resizable(0,0)
+        title = Label(rootWindow, text = "ENCRYPTBOX", bg = "black", fg = "white")
+        title.config(font = ("verdana", 40))
+        title.pack(fill=X)
+        uploadTitle = Label(rootWindow, text = "Uploading Files", bg = "black", fg = "red")
+        uploadTitle.config(font = ("verdana", 25))
+        uploadTitle.pack(fill=X)
+
+        #Name of File that is to be uploaded
+        pathOfFile = Label(rootWindow, text = "Path for file: ", fg = "black")
+        pathOfFile.config(font = ("Arial", 20))
+        pathOfFile.place(x = 25, y = 100)
+        inputFilePath = Entry(rootWindow)
+        inputFilePath.place(height = 40, width = 300, x = 280, y = 100)
+        pathPublicKey = Label(rootWindow, text = "Path for Public Key File: ", fg = "black")
+        pathPublicKey.config(font = ("Arial", 20))
+        pathPublicKey.place(x= 25, y = 150)
+        inputPublicKey = Entry(rootWindow)
+        inputPublicKey.place(height = 40, width = 300, x = 280, y = 150)
+
+        rootWindow.mainloop()
 
     def downloadFiles():
         # Set up Options Frame
@@ -95,8 +121,33 @@ class GUI:
         pathPublicKey.place(x= 25, y = 150)
         inputPublicKey = Entry(rootWindow)
         inputPublicKey.place(height = 40, width = 300, x = 280, y = 150)
+
         rootWindow.mainloop()
 
+    def shareFiles():
+        # Set up Options Frame
+        rootWindow = Tk()                   #Constructor rootWindow - main window
+        rootWindow.title('Share')
+        rootWindow.geometry("600x200")
+        rootWindow.resizable(0,0)
+        title = Label(rootWindow, text = "ENCRYPTBOX", bg = "black", fg = "white")
+        title.config(font = ("verdana", 40))
+        title.pack(fill=X)
+        shareTitle = Label(rootWindow, text = "Sharing Files", bg = "black", fg = "red")
+        shareTitle.config(font = ("verdana", 25))
+        shareTitle.pack(fill=X)
+
+        #Name of File that is to be downloaded
+        pathOfFile = Label(rootWindow, text = "Name of file: ", fg = "black")
+        pathOfFile.config(font = ("Arial", 20))
+        pathOfFile.place(x = 25, y = 100)
+        inputFileName = Entry(rootWindow)
+        inputFileName.place(height = 40, width = 300, x = 280, y = 100)
+        pathOfUrl = Label(rootWindow, text = "URL Link: ", fg = "black")
+        pathOfUrl.config(font = ("Arial", 20))
+        pathOfUrl.place(x = 25, y = 150)
+
+        rootWindow.mainloop()
 
     authWindow()
     optionWindow()
