@@ -2,4 +2,4 @@
 #   	CS 6348 - Data and Application Security
 #   	Instructor: Murat Kantarcioglu
 
-# 	Purpose:-  Encryption support to Dropbox, so that you can encrypt files before it gets stored on Dropbox
+# 	Purpose:-  Encryption support for Box, so that you can encrypt files before it gets stored on the Box platform
