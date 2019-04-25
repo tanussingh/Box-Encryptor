@@ -44,6 +44,9 @@ class GUI:
         submitAuth = Button(text = "Login", fg = "black")
         submitAuth.place(height = 40, width = 250, x = 150, y = 250)
 
+        #Upon click, Perfrom authentication using box 
+        #If proper call optionWindow()
+
         rootWindow.mainloop()               #Ensures window constantly displays until closed
 
     def optionWindow():
@@ -68,6 +71,8 @@ class GUI:
         submitAuth = Button(text = "Share Files", fg = "black", font=helv36)
         submitAuth.place(height = 40, width = 250, x = 150, y = 250)
 
+        #Based on option selected, call appropriate menu
+    
         rootWindow.mainloop()
 
     def uploadFiles():
@@ -94,6 +99,8 @@ class GUI:
         pathPublicKey.place(x= 25, y = 150)
         inputPublicKey = Entry(rootWindow)
         inputPublicKey.place(height = 40, width = 300, x = 280, y = 150)
+
+        #After input call uploading script 
 
         rootWindow.mainloop()
 
@@ -122,6 +129,8 @@ class GUI:
         inputPublicKey = Entry(rootWindow)
         inputPublicKey.place(height = 40, width = 300, x = 280, y = 150)
 
+        #After input has been entered call downlaod script
+
         rootWindow.mainloop()
 
     def shareFiles():
@@ -147,6 +156,8 @@ class GUI:
         pathOfUrl.config(font = ("Arial", 20))
         pathOfUrl.place(x = 25, y = 150)
 
+        #After input call sharing script 
+        
         rootWindow.mainloop()
 
     authWindow()
