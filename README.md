@@ -1,4 +1,5 @@
 # ENCRYPTBOX
+Purpose:-  Encryption support for Box, so that you can encrypt files before it gets stored on the Box platform
 Project for CS 6348 (Spring19) at The University of Texas at Dallas. 
 
 ## Project team: 
