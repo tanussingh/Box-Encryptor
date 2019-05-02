@@ -23,7 +23,7 @@ def authWindow():
     # Set up Auth Frame
     rootWindow = Tk()                   #Constructor rootWindow - main window
     rootWindow.title('EncryptBox Login')
-    rootWindow.geometry('550x320')
+    rootWindow.geometry('700x350')
     rootWindow.resizable(0,0)
     title = Label(rootWindow, text = 'ENCRYPTBOX', bg = 'black', fg = 'white')
     title.config(font = ('verdana', 40))
@@ -35,21 +35,21 @@ def authWindow():
     #Username and Password Authentication
     pathUsername = Label(rootWindow, text = 'Username for Box: ', fg = 'black')
     pathUsername.config(font = ('Arial', 20))
-    pathUsername.place(x = 25, y = 100)
+    pathUsername.place(x = 100, y = 150)
     inputUsername = Entry(rootWindow)
-    inputUsername.place(height = 40, width = 150, x = 300, y = 100)
+    inputUsername.place(height = 40, width = 250, x = 350, y = 150)
     pathPassword = Label(rootWindow, text = 'Password for Box: ', fg = 'black')
     pathPassword.config(font = ('Arial', 20))
-    pathPassword.place(x= 25, y = 150)
+    pathPassword.place(x= 100, y = 200)
     inputPassword = Entry(rootWindow)
-    inputPassword.place(height = 40, width = 150, x = 300, y = 150)
-    pathDevTok = Label(rootWindow, text = 'Enter Developer Token: ', fg = 'black')
+    inputPassword.place(height = 40, width = 250, x = 350, y = 200)
+    pathDevTok = Label(rootWindow, text = 'Developer Token: ', fg = 'black')
     pathDevTok.config(font = ('Arial', 20))
-    pathDevTok.place(x = 25, y = 200)
+    pathDevTok.place(x = 100, y = 250)
     inputDevTok = Entry(rootWindow)
-    inputDevTok.place(height = 40, width = 150, x = 300, y = 200)
-    submitAuth = Button(text = 'Login', fg = 'black')
-    submitAuth.place(height = 40, width = 250, x = 150, y = 250)
+    inputDevTok.place(height = 40, width = 250, x = 350, y = 250)
+    submitAuth = Button(text = 'Login', fg = 'black', font = ('verdana', 15))
+    submitAuth.place(height = 40, width = 250, x = 225, y = 300)
     submitAuth.bind('<Button-1>', submitHandler)
 
     rootWindow.mainloop()               #Ensures window constantly displays until closed
@@ -68,7 +68,7 @@ def optionWindow():
     # Set up Options Frame
     rootWindow = Tk()                   #Constructor rootWindow - main window
     rootWindow.title('Action')
-    rootWindow.geometry('550x320')
+    rootWindow.geometry('700x350')
     rootWindow.resizable(0,0)
     title = Label(rootWindow, text = 'ENCRYPTBOX', bg = 'black', fg = 'white')
     title.config(font = ('verdana', 40))
@@ -78,15 +78,14 @@ def optionWindow():
     optionTitle.pack(fill=X)
 
     #Provide the 3 option buttons
-    helv36 = font.Font(family='Helvetica', size=24)
-    btnUpload = Button(text = 'Upload Files', fg = 'black', font=helv36)
-    btnUpload.place(height = 40, width = 250, x = 150, y = 100)
+    btnUpload = Button(text = 'Upload Files', fg = 'black', font = ('verdana', 15))
+    btnUpload.place(height = 40, width = 250, x = 225, y = 150)
     btnUpload.bind('<Button-1>', upload)
-    btnDownload = Button(text = 'Download Files', fg = 'black', font=helv36)
-    btnDownload.place(height = 40, width = 250, x = 150, y = 175)
+    btnDownload = Button(text = 'Download Files', fg = 'black', font = ('verdana', 15))
+    btnDownload.place(height = 40, width = 250, x = 225, y = 200)
     btnDownload.bind('<Button-1>', download)
-    btnShare = Button(text = 'Share Files', fg = 'black', font=helv36)
-    btnShare.place(height = 40, width = 250, x = 150, y = 250)
+    btnShare = Button(text = 'Share Files', fg = 'black', font = ('verdana', 15))
+    btnShare.place(height = 40, width = 250, x = 225, y = 250)
     btnShare.bind('<Button-1>', share)
 
     rootWindow.mainloop()
@@ -97,11 +96,14 @@ def uploadFiles():
         boxUpload(client, inputFilePath.get(), '450516904071')
         rootWindow.destroy()
         optionWindow()
+    def menu(event):
+        rootWindow.destroy()
+        optionWindow()
 
     # Set up Options Frame
     rootWindow = Tk()                   #Constructor rootWindow - main window
     rootWindow.title('Upload')
-    rootWindow.geometry('600x320')
+    rootWindow.geometry('700x350')
     rootWindow.resizable(0,0)
     title = Label(rootWindow, text = 'ENCRYPTBOX', bg = 'black', fg = 'white')
     title.config(font = ('verdana', 40))
@@ -111,28 +113,40 @@ def uploadFiles():
     uploadTitle.pack(fill=X)
 
     #Name of File that is to be uploaded
-    helv36 = font.Font(family='Helvetica', size=24)
     pathOfFile = Label(rootWindow, text = 'Path for file: ', fg = 'black')
     pathOfFile.config(font = ('Arial', 20))
-    pathOfFile.place(x = 25, y = 100)
+    pathOfFile.place(x = 25, y = 150)
     inputFilePath = Entry(rootWindow)
-    inputFilePath.place(height = 40, width = 300, x = 280, y = 100)
+    inputFilePath.place(height = 40, width = 300, x = 350, y = 150)
     pathPublicKey = Label(rootWindow, text = 'Path for Public Key File: ', fg = 'black')
     pathPublicKey.config(font = ('Arial', 20))
-    pathPublicKey.place(x= 25, y = 150)
+    pathPublicKey.place(x= 25, y = 200)
     inputPublicKey = Entry(rootWindow)
-    inputPublicKey.place(height = 40, width = 300, x = 280, y = 150)
-    btnUpload = Button(text = 'Upload', fg = 'black', font = helv36)
-    btnUpload.place(height = 40, width = 250, x = 280, y = 200)
+    inputPublicKey.place(height = 40, width = 300, x = 350, y = 200)
+    btnUpload = Button(text = 'Upload', fg = 'black', font = ('verdana', 15))
+    btnUpload.place(height = 40, width = 250, x = 350, y = 250)
     btnUpload.bind('<Button-1>', upload)
+    btnMenu = Button(text = 'Menu', fg = 'black', font = ('verdana', 15))
+    btnMenu.place(height = 40, width = 250, x = 350, y = 300)
+    btnMenu.bind('<Button-1>', menu)
 
     rootWindow.mainloop()
 
 def downloadFiles():
+    def download(event):
+        #After input has been entered call downlaod script
+        items = map(lambda x: files[x].id, listbox.curselection())
+        boxDownload(client, items)
+        rootWindow.destroy()
+        optionWindow()
+    def menu(event):
+        rootWindow.destroy()
+        optionWindow()
+
     # Set up Options Frame
     rootWindow = Tk()                   #Constructor rootWindow - main window
     rootWindow.title('Download')
-    rootWindow.geometry('600x320')
+    rootWindow.geometry('700x350')
     rootWindow.resizable(0,0)
     title = Label(rootWindow, text = 'ENCRYPTBOX', bg = 'black', fg = 'white')
     title.config(font = ('verdana', 40))
@@ -141,27 +155,41 @@ def downloadFiles():
     downloadTitle.config(font = ('verdana', 25))
     downloadTitle.pack(fill=X)
 
-    #Name of File that is to be downloaded
-    pathOfFile = Label(rootWindow, text = 'Name of file: ', fg = 'black')
-    pathOfFile.config(font = ('Arial', 20))
-    pathOfFile.place(x = 25, y = 100)
-    inputFileName = Entry(rootWindow)
-    inputFileName.place(height = 40, width = 300, x = 280, y = 100)
-    pathPublicKey = Label(rootWindow, text = 'Path for Public Key File: ', fg = 'black')
-    pathPublicKey.config(font = ('Arial', 20))
-    pathPublicKey.place(x= 25, y = 150)
-    inputPublicKey = Entry(rootWindow)
-    inputPublicKey.place(height = 40, width = 300, x = 280, y = 150)
+    #get files currently in box
+    files = boxSearch(client)
 
-    #After input has been entered call downlaod script
+    listbox = Listbox(rootWindow, selectmode=MULTIPLE)
+    listbox.place(height = 230, width = 300, x = 25, y = 115)
+    for x in range(0, len(files)):
+        listbox.insert(END, files[x].name)
+
+    instLabel = Label(rootWindow, text = '<-Select all files to download', fg = 'black')
+    instLabel.config(font = ('Arial', 20))
+    instLabel.place(x = 350, y = 150)
+    btnDownload = Button(text = 'Download', fg = 'black', font = ('verdana', 15))
+    btnDownload.place(height = 40, width = 250, x = 350, y = 200)
+    btnDownload.bind('<Button-1>', download)
+    btnMenu = Button(text = 'Menu', fg = 'black', font = ('verdana', 15))
+    btnMenu.place(height = 40, width = 250, x = 350, y = 250)
+    btnMenu.bind('<Button-1>', menu)
 
     rootWindow.mainloop()
 
 def shareFiles():
+    def share(event):
+        #After input call sharing script 
+        items = map(lambda x: files[x].id, listbox.curselection())
+        urls = boxShare(client, items)
+        print urls
+        rootWindow.destroy()
+        optionWindow()
+    def menu(event):
+        rootWindow.destroy()
+        optionWindow()
     # Set up Options Frame
     rootWindow = Tk()                   #Constructor rootWindow - main window
     rootWindow.title('Share')
-    rootWindow.geometry('600x200')
+    rootWindow.geometry('700x350')
     rootWindow.resizable(0,0)
     title = Label(rootWindow, text = 'ENCRYPTBOX', bg = 'black', fg = 'white')
     title.config(font = ('verdana', 40))
@@ -170,20 +198,25 @@ def shareFiles():
     shareTitle.config(font = ('verdana', 25))
     shareTitle.pack(fill=X)
 
-    #Name of File that is to be downloaded
-    pathOfFile = Label(rootWindow, text = 'Name of file: ', fg = 'black')
-    pathOfFile.config(font = ('Arial', 20))
-    pathOfFile.place(x = 25, y = 100)
-    inputFileName = Entry(rootWindow)
-    inputFileName.place(height = 40, width = 300, x = 280, y = 100)
-    pathOfUrl = Label(rootWindow, text = 'URL Link: ', fg = 'black')
-    pathOfUrl.config(font = ('Arial', 20))
-    pathOfUrl.place(x = 25, y = 150)
+    #get files currently in box
+    files = boxSearch(client)
 
-    #After input call sharing script 
+    listbox = Listbox(rootWindow, selectmode=MULTIPLE)
+    listbox.place(height = 230, width = 300, x = 25, y = 115)
+    for x in range(0, len(files)):
+        listbox.insert(END, files[x].name)
+    
+    instLabel = Label(rootWindow, text = '<-Select all files to share', fg = 'black')
+    instLabel.config(font = ('Arial', 20))
+    instLabel.place(x = 350, y = 150)
+    btnShare = Button(text = 'Share', fg = 'black', font = ('verdana', 15))
+    btnShare.place(height = 40, width = 250, x = 350, y = 200)
+    btnShare.bind('<Button-1>', share)
+    btnMenu = Button(text = 'Menu', fg = 'black', font = ('verdana', 15))
+    btnMenu.place(height = 40, width = 250, x = 350, y = 250)
+    btnMenu.bind('<Button-1>', menu)
     
     rootWindow.mainloop()
-
 
 authWindow()
 
