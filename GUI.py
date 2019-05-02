@@ -13,13 +13,16 @@ from tkinter import *
 from boxIO import *
 
 def authWindow():
-    def submitHandler(event):
+    def login(event):
         #Upon click, Perfrom authentication using box 
         #If proper call optionWindow()
         global client 
         client = boxGetClient(inputUsername.get(), inputPassword.get(), inputDevTok.get())
         rootWindow.destroy()
         optionWindow()
+    def exit(event):
+        rootWindow.destroy()
+
     # Set up Auth Frame
     rootWindow = Tk()                   #Constructor rootWindow - main window
     rootWindow.title('EncryptBox Login')
@@ -48,9 +51,12 @@ def authWindow():
     pathDevTok.place(x = 100, y = 250)
     inputDevTok = Entry(rootWindow)
     inputDevTok.place(height = 40, width = 250, x = 350, y = 250)
-    submitAuth = Button(text = 'Login', fg = 'black', font = ('verdana', 15))
-    submitAuth.place(height = 40, width = 250, x = 225, y = 300)
-    submitAuth.bind('<Button-1>', submitHandler)
+    btnSubmit = Button(text = 'Login', fg = 'black', font = ('verdana', 15))
+    btnSubmit.place(height = 40, width = 250, x = 365, y = 300)
+    btnSubmit.bind('<Button-1>', login)
+    btnExit = Button(text = 'Exit', fg = 'black', font = ('verdana', 15))
+    btnExit.place(height = 40, width = 250, x = 85, y = 300)
+    btnExit.bind('<Button-1>', exit)
 
     rootWindow.mainloop()               #Ensures window constantly displays until closed
 
@@ -64,6 +70,9 @@ def optionWindow():
     def share(event):
         rootWindow.destroy()
         shareFiles()
+    def logout(event):
+        rootWindow.destroy()
+        authWindow()
 
     # Set up Options Frame
     rootWindow = Tk()                   #Constructor rootWindow - main window
@@ -87,6 +96,9 @@ def optionWindow():
     btnShare = Button(text = 'Share Files', fg = 'black', font = ('verdana', 15))
     btnShare.place(height = 40, width = 250, x = 225, y = 250)
     btnShare.bind('<Button-1>', share)
+    btnLogout = Button(text = 'Logout', fg = 'black', font = ('verdana', 15))
+    btnLogout.place(height = 40, width = 250, x = 225, y = 300)
+    btnLogout.bind('<Button-1>', logout)
 
     rootWindow.mainloop()
 
@@ -94,8 +106,6 @@ def uploadFiles():
     def upload(event):
         #After input call uploading script 
         boxUpload(client, inputFilePath.get(), '450516904071')
-        rootWindow.destroy()
-        optionWindow()
     def menu(event):
         rootWindow.destroy()
         optionWindow()
@@ -137,8 +147,6 @@ def downloadFiles():
         #After input has been entered call downlaod script
         items = map(lambda x: files[x].id, listbox.curselection())
         boxDownload(client, items)
-        rootWindow.destroy()
-        optionWindow()
     def menu(event):
         rootWindow.destroy()
         optionWindow()
@@ -177,12 +185,27 @@ def downloadFiles():
 
 def shareFiles():
     def share(event):
-        #After input call sharing script 
+        def close(event):
+            subWindow.destroy()
+        #After input call sharing script
+        subWindow = Tk()
+        subWindow.title('Links to Share')
+        subWindow.geometry('550x250')
+        subWindow.resizable(0,0)
+
         items = map(lambda x: files[x].id, listbox.curselection())
         urls = boxShare(client, items)
-        print urls
-        rootWindow.destroy()
-        optionWindow()
+
+        linksListBox = Listbox(subWindow, selectmode=MULTIPLE)
+        linksListBox.pack(fill=X)
+        for x in range(0, len(urls)):
+            linksListBox.insert(END, urls[x])
+
+        btnClose = Button(subWindow, text = 'Close', fg = 'black', font = ('verdana', 15))
+        btnClose.place(height = 40, width = 250, x = 300, y = 200)
+        btnClose.bind('<Button-1>', close)
+
+        subWindow.mainloop()
     def menu(event):
         rootWindow.destroy()
         optionWindow()
