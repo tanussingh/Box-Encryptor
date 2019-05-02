@@ -9,7 +9,7 @@ This provides all of the api calls to box that we will need
 #Import Libaries
 from boxsdk import OAuth2, Client
 
-def getClient(id, secret, access_token):
+def boxGetClient(id, secret, access_token):
 	"""creates the OAuth2 object for box client
 	Input:	id - client/app id
 			secret - client/app secret
@@ -24,20 +24,20 @@ def getClient(id, secret, access_token):
 	return Client(oAuth2)
 
 
-def upload(client, path, pubkeyid):
+def boxUpload(client, path, pubkeyid):
 	"""Upload files to Box
 	Params:	path - path to a file to be uploaded
 			pubkeyid - download the public key file
 	"""
 	#download pubkey
-	download(pubkeyid)
+	boxDownload(client, [pubkeyid])
 	#send path of file to be encrypted to encrypted
 	#get path to two files back
 	#upload two files
 	#box_file = client.folder(0).upload(path)
 	box_file = client.folder(0).upload(path)
 
-def search(client):
+def boxSearch(client):
 	""" Search Box for all files
 	limits to 100 files
 	Return:	files - an array of client.file objects
@@ -48,7 +48,7 @@ def search(client):
 		files.append(x)
 	return files
 
-def download(client, file_ids):
+def boxDownload(client, file_ids):
 	"""Download files
 	Params:	file_ids - a array/list of files to download
 	"""
@@ -58,7 +58,7 @@ def download(client, file_ids):
 		file.download_to(output_file)
 		output_file.close()
 
-def share(client, file_ids):
+def boxShare(client, file_ids):
 	"""Get sharable link for a file
 	Params:	file_ids - a array/list of files to download
 	Return:	urls - an array of strings
@@ -70,7 +70,9 @@ def share(client, file_ids):
 
 #-------------TEST------------------
 """
-client = getClient('5hktjn45wuj5rhqz5jgs7ecu61ohsta7', 'Dihuus9YOCnm13Ylf03UnihIgXkyfvy1', 'ZsBMXPv4cNaDbOnRIMI9O5fiaMAbIV0K')
+client = getClient('5hktjn45wuj5rhqz5jgs7ecu61ohsta7', 
+					'Dihuus9YOCnm13Ylf03UnihIgXkyfvy1', 
+					'oAXe1xpxBX59WPfungMEPx8Q1FFcu1wv')
 public_key_file_id = '450516904071';
 choice = -1
 

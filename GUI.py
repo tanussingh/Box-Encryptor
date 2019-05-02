@@ -16,7 +16,8 @@ def authWindow():
     def submitHandler(event):
         #Upon click, Perfrom authentication using box 
         #If proper call optionWindow()
-        client = getClient(inputUsername.get(), inputPassword.get(), inputDevTok.get())
+        global client 
+        client = boxGetClient(inputUsername.get(), inputPassword.get(), inputDevTok.get())
         rootWindow.destroy()
         optionWindow()
     # Set up Auth Frame
@@ -91,6 +92,12 @@ def optionWindow():
     rootWindow.mainloop()
 
 def uploadFiles():
+    def upload(event):
+        #After input call uploading script 
+        boxUpload(client, inputFilePath.get(), '450516904071')
+        rootWindow.destroy()
+        optionWindow()
+
     # Set up Options Frame
     rootWindow = Tk()                   #Constructor rootWindow - main window
     rootWindow.title('Upload')
@@ -104,6 +111,7 @@ def uploadFiles():
     uploadTitle.pack(fill=X)
 
     #Name of File that is to be uploaded
+    helv36 = font.Font(family='Helvetica', size=24)
     pathOfFile = Label(rootWindow, text = 'Path for file: ', fg = 'black')
     pathOfFile.config(font = ('Arial', 20))
     pathOfFile.place(x = 25, y = 100)
@@ -114,8 +122,9 @@ def uploadFiles():
     pathPublicKey.place(x= 25, y = 150)
     inputPublicKey = Entry(rootWindow)
     inputPublicKey.place(height = 40, width = 300, x = 280, y = 150)
-
-    #After input call uploading script 
+    btnUpload = Button(text = 'Upload', fg = 'black', font = helv36)
+    btnUpload.place(height = 40, width = 250, x = 280, y = 200)
+    btnUpload.bind('<Button-1>', upload)
 
     rootWindow.mainloop()
 

@@ -12,6 +12,4 @@ Project for CS 6348 (Spring19) at The University of Texas at Dallas.
 Ensure that Python is installed.
 
 ## Running
---Directions--
-
-TODO
+python GUI.py
