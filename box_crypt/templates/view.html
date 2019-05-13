@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>View</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+
+<body>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+      <a class="navbar-brand" href="#">BoxCrypt</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+              Menu
+            </a>
+             <div>
+                    <p>
+                        <a href="/home">Home</a>
+                        <a href="/share">Share</a>
+                        <span>View</span>
+                    </p>
+              </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+   <div style="margin: 25px 0 0 25px;">
+       <div class="container">
+            <img src="/img/download.png" class="img-fluid" alt="Cinque Terre" width="250" height="300">
+        </div>
+        List of files on box:
+        <table> 
+          {% for x in names %}
+          <tr>
+            <td>{{x}}</td>
+            </tr>
+          {% endfor %}
+        </table>
+        <form action="/view" method="POST" style="margin-top:25px;">
+            <span>Sharer:</span>
+            <br />
+            <input type="text" name="Sharer" max-length="64" placeholder="Sharer"></input>
+            </br>
+            <span>Filename:</span>
+            <br />
+            <input type="text" name="Filename" max-length="1024" placeholder="Filename"></input>
+            <br />
+            <br />
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>
